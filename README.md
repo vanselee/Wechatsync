@@ -1,3 +1,18 @@
+2026.6.12
+使用过程中经常出现cli不可用，连不到服务，经过改进后目前有较好改善：
+
+fix: 提升 MCP/CLI 连接稳定性，新增心跳保活与智能重连
+- 新增 WebSocket 心跳机制（每 20s），防止 MV3 Service Worker 超时断开
+- 优化重连策略：前 5 次快速轮询 + 指数退避
+- 新增 MCP_RECONNECT 手动重连指令和连接状态扩展
+- 新增 Chrome MV3 定期唤醒定时器（每 30s）
+- 新增本地服务器自动检测，智能切换温热/冷却重连策略
+- 延长默认连接超时至 45 秒
+- 要求 minimum_chrome_version >= 120
+- 新增 MCP Client 单元测试
+
+
+
 # 文章同步助手 (Wechatsync)
 
 ![](https://img.shields.io/github/v/release/wechatsync/Wechatsync.svg)
